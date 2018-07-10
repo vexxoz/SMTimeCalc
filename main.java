@@ -73,14 +73,14 @@ public class main {
 					c.add(new client("bride", -1));
 					brideDone = true;
 					tempTotalService -= 3;
-					System.out.println("Added bride");
+//					System.out.println("Added bride");
 				}else {
 					if(totalServices > 0) {
 						c.add(new client(-1));
 					}
 					
 					tempTotalService--;
-					System.out.println("Added service");
+//					System.out.println("Added service");
 				}
 			}
 		}

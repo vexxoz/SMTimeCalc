@@ -73,6 +73,8 @@ public class Consultant {
 			}else if(people.get(i).getName().equalsIgnoreCase("makeup")) {
 				makeupCount++;
 				people.get(i).setName("Makeup #" + makeupCount);
+			}else if(people.get(i).getName().equalsIgnoreCase("")){
+				people.get(i).setName("Touch-Ups");
 			}
 			
 			people.get(i).setStartTime(calStart.getTime());
