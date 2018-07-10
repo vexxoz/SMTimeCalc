@@ -8,6 +8,13 @@ public class client {
 	String name;
 	int id;
 
+	public client(int idIn) {
+		startTime = null;
+		endTime = null;
+		name = "";
+		id = idIn;
+	}	
+	
 	public client(String nameIn, int idIn) {
 		startTime = null;
 		endTime = null;
