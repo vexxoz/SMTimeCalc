@@ -50,7 +50,11 @@ public class Consultant {
 		
 		for(int i=0; i<people.size();i++) {
 			if(people.get(i).getName().equalsIgnoreCase("Bride")) {
-				people.add(people.size()-2, people.remove(i));
+				try {
+					people.add(people.size()-2, people.remove(i));
+				}catch(Exception IndexOutOfBoundsException) {
+					
+				}
 				break;
 			}
 		}

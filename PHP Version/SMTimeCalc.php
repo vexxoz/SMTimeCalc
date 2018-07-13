@@ -18,10 +18,11 @@ for ($i=0; $i < $numConsultants; $i++) {
 
 for($i=0; $i < count($main); $i++){
 	// echo "cycling through consultants</br>";
-	$main[$i]->getMe();
+	echo "Consultant " . $i . ": </br>";
 	$main[$i]->callClientPrint();
 }
 
+// var_dump($main);
 
 /**
  * 
@@ -39,16 +40,12 @@ class Consultant
 
 
 	function addClient(){
-		$clients[] = new Client();
-	}
-
-	function getMe(){
-		echo "Consultant:</br>";
+		$this->clients[] = new Client();
 	}
 
 	function callClientPrint(){
 		for ($i=0; $i < count($this->clients); $i++) { 
-			$clients[$i]->printClient();
+			$this->clients[$i]->printClient();
 		}
 	}
 
@@ -62,7 +59,7 @@ class Client
 	
 	function __construct()
 	{
-		// echo "adding client to consultant</br>";
+		echo "adding client to consultant</br>";
 	}
 
 	function printClient(){

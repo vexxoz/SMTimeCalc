@@ -55,7 +55,7 @@ public class main {
 		System.out.println("How many makeups");
 		makeups = in.nextInt();
 		
-		int totalServices = ((makeups+hairs+2)/numConsultants);
+		int totalServices = (makeups+hairs+2)/numConsultants;
 		
 		System.out.println(totalServices);
 		
@@ -75,7 +75,7 @@ public class main {
 					tempTotalService -= 2;
 //					System.out.println("Added bride");
 				}else {
-					if(totalServices > 0) {
+					if(tempTotalService > 0) {
 						c.add(new Client());
 					}
 					
