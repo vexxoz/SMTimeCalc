@@ -1,16 +1,27 @@
 <?php
 
-$numConsultants = 0;
+$numConsultants = 3;
 
-$consultants = array();
+$makeupCount = 1;
+$hairCount = 1;
+
+$totalServices = $makeupCount+$hairCount;
+
+$main = array();
 
 for ($i=0; $i < $numConsultants; $i++) { 
-	array_push($main, new Consultant(4));
+	$main[] = new Consultant();
+	for ($j=0; $j < $totalServices; $j++) { 
+		$main[$i]->addClient();
+	}
 }
 
-foreach ($consultants as $key => $value) {
-	# code...
+for($i=0; $i < count($main); $i++){
+	// echo "cycling through consultants</br>";
+	$main[$i]->getMe();
+	$main[$i]->callClientPrint();
 }
+
 
 /**
  * 
@@ -18,55 +29,45 @@ foreach ($consultants as $key => $value) {
 class Consultant
 {
 
-	$people = array();
-	$hairCount = 0;
-	$makeupCount = 0;
-	$serviceTime = 0;
-	$serviceCount = 0;
+	private $clients;
 
-	function __construct($hairCountIn)
+	function __construct()
 	{
-		$hairCount = $hairCountIn;
+		// echo "adding consultant</br>";
+		$this->clients = array();
 	}
-}
 
+
+	function addClient(){
+		$clients[] = new Client();
+	}
+
+	function getMe(){
+		echo "Consultant:</br>";
+	}
+
+	function callClientPrint(){
+		for ($i=0; $i < count($this->clients); $i++) { 
+			$clients[$i]->printClient();
+		}
+	}
+
+}
 
 /**
  * 
  */
 class Client
 {
-
-	$startTime;
-	$endTime;
-	$name = "";
-
+	
 	function __construct()
 	{
-		$startTime = null;
-		$endTime = null;
+		// echo "adding client to consultant</br>";
 	}
 
-	function __construct($nameIn){
-		$name = $nameIn;
+	function printClient(){
+		echo "Client</br>";
 	}
-
-	function setStartTime($timeIn){
-		$startTime = $timeIn;
-	}
-
-	function setEndTime($timeIn){
-		$endTime = $timeIn;
-	}
-
-	function setName($nameIn){
-		$name = $nameIn;
-	}
-
-	function getName(){
-		return $name;
-	}
-
 }
 
 ?>
