@@ -2,12 +2,15 @@
 
 $numConsultants = 0;
 
-$main = array();
+$consultants = array();
 
 for ($i=0; $i < $numConsultants; $i++) { 
-	array_push($main, new array());
+	array_push($main, new Consultant(4));
 }
 
+foreach ($consultants as $key => $value) {
+	# code...
+}
 
 /**
  * 
@@ -21,11 +24,49 @@ class Consultant
 	$serviceTime = 0;
 	$serviceCount = 0;
 
-	function __construct($)
+	function __construct($hairCountIn)
 	{
-		# code...
+		$hairCount = $hairCountIn;
 	}
 }
 
+
+/**
+ * 
+ */
+class Client
+{
+
+	$startTime;
+	$endTime;
+	$name = "";
+
+	function __construct()
+	{
+		$startTime = null;
+		$endTime = null;
+	}
+
+	function __construct($nameIn){
+		$name = $nameIn;
+	}
+
+	function setStartTime($timeIn){
+		$startTime = $timeIn;
+	}
+
+	function setEndTime($timeIn){
+		$endTime = $timeIn;
+	}
+
+	function setName($nameIn){
+		$name = $nameIn;
+	}
+
+	function getName(){
+		return $name;
+	}
+
+}
 
 ?>

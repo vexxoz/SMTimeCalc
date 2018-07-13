@@ -1,25 +1,22 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class client {
+public class Client {
 
 	Date startTime;
 	Date endTime;
 	String name;
-	int id;
 
-	public client(int idIn) {
+	public Client() {
 		startTime = null;
 		endTime = null;
 		name = "";
-		id = idIn;
 	}	
 	
-	public client(String nameIn, int idIn) {
+	public Client(String nameIn) {
 		startTime = null;
 		endTime = null;
 		name = nameIn;
-		id = idIn;
 	}
 	
 	public void setStartTime(Date timeIn) {
@@ -39,10 +36,6 @@ public class client {
 	}
 	
 	public String toString() {
-		if(id > 0) {
-			return new SimpleDateFormat("hh:mm aa").format(startTime.getTime()) + " - " + new SimpleDateFormat("hh:mm aa").format(endTime.getTime()) + " " + name + " #" + id + "\n";
-		}
 		return new SimpleDateFormat("hh:mm aa").format(startTime.getTime()) + " - " + new SimpleDateFormat("hh:mm aa").format(endTime.getTime()) + " " + name + "\n";
-//		return name + "\n";
 	}
 }

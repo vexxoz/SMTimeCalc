@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Consultant {
 
-	List<client> people;
+	List<Client> people;
 	Calendar calStart;
 	Calendar calEnd;
 	static int hairCount = 0;
@@ -17,33 +17,23 @@ public class Consultant {
 	public Consultant(Date startTimeIn, Date endTimeIn) {
 		serviceTime = main.serviceTime;
 		
-		people = new ArrayList<client>();
+		people = new ArrayList<Client>();
 		calStart = Calendar.getInstance();
 		calEnd = Calendar.getInstance();
 
 		calStart.set(2018, 6, 13);
 		calStart.setTime(startTimeIn);
 		
-//		System.out.println(calStart.getTime());
-		
 		calEnd.set(2018, 6, 14);
 		calEnd.setTime(endTimeIn);
 	}
 	
-	public void add(client person) {
+	public void add(Client person) {
 		people.add(person);
 	}
 	
-	public client getClient(int index) {
-		return people.get(index);
-	}
-	
-	public client getLastClient() {
-		return people.get(people.size()-1);
-	}
-	
 	public void autoName() {
-		for(client c : people) {
+		for(Client c : people) {
 			if(c.getName().equals("")) {
 				if(main.hairs > 0) {
 					c.setName("hair");
@@ -61,7 +51,6 @@ public class Consultant {
 		for(int i=0; i<people.size();i++) {
 			if(people.get(i).getName().equalsIgnoreCase("Bride")) {
 				people.add(people.size()-2, people.remove(i));
-//				System.out.println("Switing bride");
 				break;
 			}
 		}
@@ -87,26 +76,18 @@ public class Consultant {
 		}		
 		
 		if(calStart.getTime().before(calEnd.getTime())) {
-			people.add(new client("Touch-Ups", -1));
+			people.add(new Client("Touch-Ups"));
 			people.get(people.size()-1).setStartTime(calStart.getTime());
 			people.get(people.size()-1).setEndTime(calEnd.getTime());
 		}
 		
 	}
 	
-	public void addService(int num) {
-		serviceCount += num;
-	}
-	
-	public int getService() {
-		return serviceCount;
-	}	
-	
 	public String toString() {
 		
 		String temp = "";
 		
-		for(client c: people) {
+		for(Client c: people) {
 			temp += c.toString();
 		}
 		

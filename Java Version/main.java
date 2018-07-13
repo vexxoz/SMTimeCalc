@@ -70,13 +70,13 @@ public class main {
 			int tempTotalService = totalServices;
 			while(tempTotalService > 0) {
 				if(!brideDone) {
-					c.add(new client("bride", -1));
+					c.add(new Client("bride"));
 					brideDone = true;
 					tempTotalService -= 2;
 //					System.out.println("Added bride");
 				}else {
 					if(totalServices > 0) {
-						c.add(new client(-1));
+						c.add(new Client());
 					}
 					
 					tempTotalService--;
