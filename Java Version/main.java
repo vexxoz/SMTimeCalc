@@ -19,6 +19,11 @@ public class main {
 	public static int makeups = 0;
 	
 	public static void main(String[] args) {
+
+		// Gets number of consultants
+		System.out.println("How long per service");
+		Scanner timing = new Scanner(System.in);
+		serviceTime = timing.nextInt();
 		
 		// Gets number of consultants
 		System.out.println("How many consultants");
