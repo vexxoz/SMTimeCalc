@@ -15,7 +15,7 @@ public class Consultant {
 	int serviceCount = 0;
 	
 	public Consultant(Date startTimeIn, Date endTimeIn) {
-		serviceTime = main.serviceTime;
+		serviceTime = TimeCalc.serviceTime;
 		
 		people = new ArrayList<Client>();
 		calStart = Calendar.getInstance();
@@ -35,12 +35,12 @@ public class Consultant {
 	public void autoName() {
 		for(Client c : people) {
 			if(c.getName().equals("")) {
-				if(main.hairs > 0) {
+				if(TimeCalc.hairs > 0) {
 					c.setName("hair");
-					main.hairs--;
-				}else if(main.makeups > 0) {
+					TimeCalc.hairs--;
+				}else if(TimeCalc.makeups > 0) {
 					c.setName("makeup");
-					main.makeups--;
+					TimeCalc.makeups--;
 				}
 			}
 		}	
