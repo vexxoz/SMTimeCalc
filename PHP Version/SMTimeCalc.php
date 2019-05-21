@@ -45,9 +45,9 @@
 	function addConsultant(){
 		// checks to see if at least one consultant has been added
 		if(!$("#main").length){
-			document.getElementById("results").innerHTML += "<h2>Consultant "+count+"</h2><input type='text' id='consultant_makeup_"+count+"' value='45' placeholder='Makeup Time'/><input type='text' id='consultant_hair_"+count+"' value='45' placeholder='Hair Time'/><button onclick=\"updateTime('"+count+"')\">Update</button><div id='consultant_id_"+count+"' data-makeup-time='45' data-hair-time='45'><ul class='sortable' id='main'></ul></div>";
+			document.getElementById("results").innerHTML += "<h2>Consultant "+count+"</h2><span>Makeup:</span><input type='text' id='consultant_makeup_"+count+"' value='45' placeholder='Makeup Time'/><span>Hair:</span><input type='text' id='consultant_hair_"+count+"' value='45' placeholder='Hair Time'/><span>Bride:</span><input type='text' id='consultant_bride_"+count+"' value='120' placeholder='Bride Time'/><button onclick=\"updateTime('"+count+"')\">Update</button><div id='consultant_id_"+count+"' data-makeup-time='45' data-hair-time='45' data-bride-time='120'><ul class='sortable' id='main'></ul></div>";
 		}else{
-			document.getElementById("results").innerHTML += "<h2>Consultant "+count+"</h2><input type='text' id='consultant_makeup_"+count+"' value='45' placeholder='Makeup Time'/><input type='text' id='consultant_hair_"+count+"' value='45' placeholder='Hair Time'/><button onclick=\"updateTime('"+count+"')\">Update</button><div id='consultant_id_"+count+"' data-makeup-time='45' data-hair-time='45'><ul class='sortable'></ul></div>";
+			document.getElementById("results").innerHTML += "<h2>Consultant "+count+"</h2><span>Makeup:</span><input type='text' id='consultant_makeup_"+count+"' value='45' placeholder='Makeup Time'/><span>Hair:</span><input type='text' id='consultant_hair_"+count+"' value='45' placeholder='Hair Time'/><span>Bride:</span><input type='text' id='consultant_bride_"+count+"' value='120' placeholder='Bride Time'/><button onclick=\"updateTime('"+count+"')\">Update</button><div id='consultant_id_"+count+"' data-makeup-time='45' data-hair-time='45' data-bride-time='120'><ul class='sortable'></ul></div>";
 		}
 		count++;
 		// make new elements sortable
@@ -58,8 +58,10 @@
 	function updateTime(id){
 		var newHair = document.getElementById("consultant_hair_" + id).value;
 		var newMakeup = document.getElementById("consultant_makeup_" + id).value;
+		var newBride = document.getElementById("consultant_bride_" + id).value;
 		document.getElementById("consultant_id_" + id).setAttribute("data-makeup-time", newMakeup);
 		document.getElementById("consultant_id_" + id).setAttribute("data-hair-time", newHair);
+		document.getElementById("consultant_id_" + id).setAttribute("data-bride-time", newBride);
 		recountTime("consultant_id_" + id,'');
 	}	
 	
@@ -83,6 +85,7 @@
 			//get the consultants hair and makeup times
 			var hairTime = document.getElementById(fromId).getAttribute("data-hair-time");
 			var makeupTime = document.getElementById(fromId).getAttribute("data-makeup-time");
+			var brideTime = document.getElementById(fromId).getAttribute("data-bride-time");
 			
 			// get the div from the consultant
 			var div = document.getElementById(fromId);
@@ -116,7 +119,7 @@
 						// update start time
 						spans[0].innerHTML = time.toLocaleTimeString();
 						// update time
-						time = new Date(time.getTime() + 120*60000);
+						time = new Date(time.getTime() + brideTime*60000);
 						// update end time
 						spans[1].innerHTML = time.toLocaleTimeString();
 					}
@@ -127,6 +130,7 @@
 			var time = startTime;
 			var hairTime = document.getElementById(toId).getAttribute("data-hair-time");
 			var makeupTime = document.getElementById(toId).getAttribute("data-makeup-time");
+			var brideTime = document.getElementById(fromId).getAttribute("data-bride-time");
 			
 			var div = document.getElementById(toId);
 			var lists = div.getElementsByTagName("ul");
@@ -156,7 +160,7 @@
 						// update start time
 						spans[0].innerHTML = time.toLocaleTimeString();
 						// update time
-						time = new Date(time.getTime() + 120*60000);
+						time = new Date(time.getTime() + brideTime*60000);
 						// update end time
 						spans[1].innerHTML = time.toLocaleTimeString();
 					}
