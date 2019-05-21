@@ -19,12 +19,15 @@
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 </head>
 <body>
 	<button name="addConst" id="addConst" onclick="addConsultant()">Add Consultant</button>
 	<button name="addBride" id="addBride" onclick="addService('Bride')">Add Bride</button>	
 	<button name="addHair" id="addHair" onclick="addService('Hair')">Add Hair</button>
 	<button name="addMakeup" id="addMakeup" onclick="addService('Makeup')">Add Makeup</button>
+	<input type="text" id="startTime" value="07:00" placeholder=""/>
+	<button name="updateStartTime" id="updateStartTime" onclick="updateStartTime()">Update Start Time</button>
 	<button name="export" id="export" onclick="">Export Schedule</button>	
 
 	
@@ -32,14 +35,35 @@
 		
 	</div>
 	<div id="test"></div>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
+	
   <script>
   // sortable variables
     var oldList, newList, item;
 	// count for the consultants
 	var count = 1;
 	// start time
-	var startTime = new Date("27 July 2016 07:00:00");
+	var startTime;
+	
+	
+	// updates start time
+	function updateStartTime(){
+		var tempTime = document.getElementById("startTime").value;
+		startTime = new Date("27 July 2016 " + tempTime);
+	}
+	
+	$('#startTime').timepicker({
+	    timeFormat: 'hh:mm:ss a',
+	    interval: 10,
+	    minTime: '5:00 am',
+	    maxTime: '10:00 pm',
+	    defaultTime: '07:00',
+	    startTime: '5:00 am',
+	    dynamic: false,
+	    dropdown: true,
+	    scrollbar: true
+	});
 	
 	// add a consultant to the results div/schedule
 	function addConsultant(){
@@ -169,9 +193,6 @@
 		}
 	}
 	
-	// calls sortable for any existing consultants on load
-	newSortable();
-	
 	// function makes all elements in results as a sortable so the services can be dragged around
 	function newSortable(){
         $('.sortable').sortable({
@@ -189,6 +210,11 @@
             connectWith: ".sortable"
 			}).disableSelection();
 	}
+	
+    // calls sortable for any existing consultants on load
+	newSortable();
+	// sets start time
+	updateStartTime();
 		
 	</script>
 </html>
