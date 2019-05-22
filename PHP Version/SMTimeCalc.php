@@ -16,6 +16,14 @@
     min-height: 50px;
     background: grey;
   }
+  .trash{
+	  margin-top: 50px;
+	  background-color: red;
+	  min-height: 50px;
+  }
+  li{
+	  font-size: 25px;
+  }
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -35,6 +43,7 @@
 		
 	</div>
 	<div id="test"></div>
+	<div class="trash"></div>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
 	
@@ -52,6 +61,13 @@
 		var tempTime = document.getElementById("startTime").value;
 		startTime = new Date("27 July 2016 " + tempTime);
 	}
+	
+	$('.trash').droppable({
+		drop: function ( event, ui ) {	
+			alert("tet");
+			ui.draggable.remove();
+		}
+	});	
 	
 	$('#startTime').timepicker({
 	    timeFormat: 'hh:mm:ss a',
@@ -201,20 +217,19 @@
                 newList = oldList = ui.item.parent().parent();
             },
             stop: function(event, ui) {          
-                 //alert("Moved " + item.text() + " from " + oldList.attr('id') + " to " + newList.attr('id'));
 				 recountTime(oldList.attr('id'), newList.attr('id'));
             },
             change: function(event, ui) {  
                 if(ui.sender) newList = ui.placeholder.parent().parent();
             },
             connectWith: ".sortable"
-			}).disableSelection();
+			}).droppable({greedy: true})
 	}
 	
     // calls sortable for any existing consultants on load
 	newSortable();
 	// sets start time
 	updateStartTime();
-		
+	
 	</script>
 </html>
