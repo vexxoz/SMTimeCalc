@@ -14,15 +14,15 @@
     border-bottom: solid 2px black;
     width: 100%;
     min-height: 50px;
-    background: grey;
+    background: lightgrey;
   }
   .trash{
 	  margin-top: 50px;
-	  background-color: red;
+	  background-color: grey;
 	  min-height: 50px;
   }
   li{
-	  font-size: 25px;
+	  
   }
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -43,7 +43,7 @@
 		
 	</div>
 	<div id="test"></div>
-	<div class="trash"></div>
+	<div class="trash">Trash</div>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
 	
@@ -64,13 +64,12 @@
 	
 	$('.trash').droppable({
 		drop: function ( event, ui ) {	
-			alert("tet");
 			ui.draggable.remove();
 		}
 	});	
 	
 	$('#startTime').timepicker({
-	    timeFormat: 'hh:mm:ss a',
+	    timeFormat: 'hh:mm a',
 	    interval: 10,
 	    minTime: '5:00 am',
 	    maxTime: '10:00 pm',
@@ -141,27 +140,27 @@
 					// if the service is a hair
 					if(items[j].innerHTML.includes("Hair")){
 						// update start time
-						spans[0].innerHTML = time.toLocaleTimeString();
+						spans[0].innerHTML = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 						// update time
 						time = new Date(time.getTime() + hairTime*60000);
 						// update end time
-						spans[1].innerHTML = time.toLocaleTimeString();
+						spans[1].innerHTML = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 					}
 					if(items[j].innerHTML.includes("Makeup")){
 						// update start time
-						spans[0].innerHTML = time.toLocaleTimeString();
+						spans[0].innerHTML = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 						// update time
 						time = new Date(time.getTime() + makeupTime*60000);
 						// update end time
-						spans[1].innerHTML = time.toLocaleTimeString();
+						spans[1].innerHTML = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 					}
 					if(items[j].innerHTML.includes("Bride")){
 						// update start time
-						spans[0].innerHTML = time.toLocaleTimeString();
+						spans[0].innerHTML = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 						// update time
 						time = new Date(time.getTime() + brideTime*60000);
 						// update end time
-						spans[1].innerHTML = time.toLocaleTimeString();
+						spans[1].innerHTML = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 					}
 		        }
 			}
@@ -182,27 +181,27 @@
 					var spans = items[j].getElementsByTagName("span");
 					if(items[j].innerHTML.includes("Hair")){
 						// update start time
-						spans[0].innerHTML = time.toLocaleTimeString();
+						spans[0].innerHTML = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 						// update time
 						time = new Date(time.getTime() + hairTime*60000);
 						// update end time
-						spans[1].innerHTML = time.toLocaleTimeString();
+						spans[1].innerHTML = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 					}
 					if(items[j].innerHTML.includes("Makeup")){
 						// update start time
-						spans[0].innerHTML = time.toLocaleTimeString();
+						spans[0].innerHTML = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 						// update time
 						time = new Date(time.getTime() + makeupTime*60000);
 						// update end time
-						spans[1].innerHTML = time.toLocaleTimeString();
+						spans[1].innerHTML = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 					}
 					if(items[j].innerHTML.includes("Bride")){
 						// update start time
-						spans[0].innerHTML = time.toLocaleTimeString();
+						spans[0].innerHTML = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 						// update time
 						time = new Date(time.getTime() + brideTime*60000);
 						// update end time
-						spans[1].innerHTML = time.toLocaleTimeString();
+						spans[1].innerHTML = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 					}
 		        }
 			}
